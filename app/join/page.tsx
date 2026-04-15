@@ -1,120 +1,114 @@
 'use client';
 
 import { useState } from 'react';
-import { registerHuman, TIER_INFO } from '@/lib/engine';
+import { registerHuman } from '@/lib/engine';
+
+interface Registration {
+  privateId: string;
+  agentId: string;
+  repId: number;
+  tier: string;
+  badges?: string[];
+}
 
 export default function JoinPage() {
-  const [step, setStep] = useState<'form' | 'saving' | 'done'>('form');
+  const [step, setStep] = useState<'form' | 'loading' | 'done'>('form');
   const [agreed, setAgreed] = useState(false);
-  const [result, setResult] = useState<{
-    privateId: string; agentId: string; repId: number;
-  } | null>(null);
-  const [copied, setCopied] = useState(false);
+  const [result, setResult] = useState<Registration | null>(null);
+  const [copied, setCopied] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const register = async () => {
     if (!agreed) return;
-    setStep('saving');
-    setError(null);
+    setStep('loading');
     try {
       const data = await registerHuman();
-      setResult({
-        privateId: data.privateId,
-        agentId: data.agentId,
-        repId: data.repId,
-      });
+      setResult(data);
       setStep('done');
+      if (typeof window !== 'undefined') {
+        const confetti = (await import('canvas-confetti')).default;
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#F59E0B', '#FFFFFF', '#3B82F6'],
+        });
+      }
     } catch {
       setError('Registration failed. Please try again.');
       setStep('form');
     }
   };
 
-  const copy = (text: string) => {
+  const copy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopied(key);
+    setTimeout(() => setCopied(null), 2000);
   };
-
-  const tier = TIER_INFO.CUSTODIED_DBT;
 
   return (
     <main className="min-h-screen bg-gray-950 text-gray-100">
-      <nav className="border-b border-gray-800/50 px-6 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
+      <nav className="border-b border-gray-800/50 px-6 py-4">
+        <a href="/" className="flex items-center gap-2 w-fit">
           <span className="text-white font-bold text-xl">RepID</span>
-          <span className="text-gray-500 text-sm">.dev</span>
+          <span className="text-gray-500">.dev</span>
         </a>
       </nav>
-
-      <div className="max-w-lg mx-auto px-6 pt-16 pb-24">
+      <div className="max-w-md mx-auto px-6 pt-16 pb-24">
         {step === 'form' && (
           <>
             <h1 className="text-3xl font-bold mb-2">Get your DBT</h1>
             <p className="text-gray-500 text-sm mb-8">
-              No email. No account. No identity. Just a private credential
-              that proves your trustworthiness anonymously.
+              No email. No account. No identity stored. Just your private credential.
             </p>
-
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-6">
-              <h2 className="font-medium text-gray-200 mb-3 text-sm">
-                Your starting constitution
-              </h2>
-              <div className="space-y-2 text-sm text-gray-400">
-                {[
-                  'Act justly, love mercy, walk humbly (Micah 6:8)',
-                  'Never state an opinion as a certain fact',
-                  'Treat others as you wish to be treated (Matthew 7:12)',
-                ].map((rule, i) => (
-                  <div key={i} className="flex gap-2">
-                    <span className="text-gray-600 font-mono">{i + 1}.</span>
-                    <span>{rule}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-5">
+              <p className="text-xs text-gray-500 font-mono uppercase mb-3">Your starting constitution</p>
+              {[
+                'Act justly, love mercy, walk humbly (Micah 6:8)',
+                'Never state an opinion as a certain fact',
+                'Treat others as you wish to be treated (Matthew 7:12)',
+              ].map((rule, i) => (
+                <div key={i} className="flex gap-2 text-sm text-gray-400 mb-1">
+                  <span className="text-gray-600 font-mono">{i + 1}.</span>
+                  <span>{rule}</span>
+                </div>
+              ))}
             </div>
-
-            <div className="bg-amber-950/30 border border-amber-800/50 rounded-xl p-4 mb-6">
-              <p className="text-amber-300 text-sm font-medium mb-1">
-                ⚠️ Important — read before continuing
-              </p>
+            <div className="bg-amber-950/30 border border-amber-800/40 rounded-xl p-4 mb-5">
+              <p className="text-amber-300 text-sm font-medium mb-1">⚠️ Read before continuing</p>
               <p className="text-amber-400/70 text-xs leading-relaxed">
-                We generate a private ID that only you will see. We do not store
-                it — if you lose it, there is no recovery. Save it somewhere safe.
+                You will receive a Private ID. We do not store it. If you lose it, it cannot be
+                recovered. Save it immediately.
               </p>
             </div>
-
-            <label className="flex items-start gap-3 mb-6 cursor-pointer">
+            <label className="flex gap-3 mb-6 cursor-pointer items-start">
               <input
                 type="checkbox"
                 checked={agreed}
                 onChange={e => setAgreed(e.target.checked)}
-                className="mt-0.5 rounded"
+                className="mt-0.5"
               />
               <span className="text-sm text-gray-400">
-                I understand my private ID cannot be recovered if lost.
-                I will save it immediately.
+                I understand my Private ID cannot be recovered. I will save it immediately.
               </span>
             </label>
-
             {error && (
               <div className="bg-red-950 border border-red-800 rounded-lg px-4 py-3 text-red-300 text-sm mb-4">
                 {error}
               </div>
             )}
-
             <button
               onClick={register}
               disabled={!agreed}
               className="w-full bg-white hover:bg-gray-100 disabled:opacity-40 text-gray-950 py-4 rounded-xl font-semibold transition-colors">
-              Generate My Private DBT →
+              Generate My Anonymous DBT →
             </button>
           </>
         )}
 
-        {step === 'saving' && (
+        {step === 'loading' && (
           <div className="text-center pt-16">
-            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"/>
+            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4" />
             <p className="text-gray-400">Generating your anonymous identity...</p>
           </div>
         )}
@@ -122,68 +116,61 @@ export default function JoinPage() {
         {step === 'done' && result && (
           <>
             <div className="text-center mb-8">
-              <div className="text-4xl mb-3">🎉</div>
-              <h1 className="text-2xl font-bold mb-1">Your DBT is ready</h1>
+              <div className="text-5xl mb-3">🎉</div>
+              <h1 className="text-2xl font-bold mb-1">Your DBT is ready!</h1>
               <p className="text-gray-500 text-sm">
-                Save everything below — especially your Private ID
+                RepID: {result.repId.toLocaleString()} · {result.tier} · Genesis Badge earned
               </p>
             </div>
 
-            <div className={`${tier.bg} border ${tier.border} rounded-xl p-5 mb-4 text-center`}>
-              <div className={`text-4xl font-bold font-mono mb-1 ${tier.color}`}>
-                {result.repId.toLocaleString()}
-              </div>
-              <div className="text-gray-400 text-sm">Starting RepID</div>
-              <div className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-mono border ${tier.border} ${tier.color}`}>
-                CUSTODIED_DBT
-              </div>
-            </div>
-
             <div className="bg-red-950/30 border border-red-800/50 rounded-xl p-4 mb-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-red-300 text-xs font-mono font-bold uppercase">
-                  ⚠️ Private ID — Save this now
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-red-300 text-xs font-mono font-bold">
+                  ⚠️ PRIVATE ID — SAVE NOW (shown once)
                 </span>
                 <button
-                  onClick={() => copy(result.privateId)}
+                  onClick={() => copy(result.privateId, 'private')}
                   className="text-xs text-red-400 hover:text-red-200 font-mono">
-                  {copied ? 'Copied!' : 'Copy'}
+                  {copied === 'private' ? '✓ Copied' : 'Copy'}
                 </button>
               </div>
-              <code className="text-red-200 text-xs break-all font-mono">
-                {result.privateId}
-              </code>
+              <code className="text-red-200 text-xs break-all font-mono block">{result.privateId}</code>
               <p className="text-red-400/60 text-xs mt-2">
-                This is your only credential. We do not store it.
-                If you lose it, you cannot prove ownership.
+                Not stored by us. Cannot be recovered. Save it now.
               </p>
             </div>
 
             <div className="bg-gray-900 border border-gray-700 rounded-xl p-4 mb-6">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-400 text-xs font-mono uppercase">
-                  Agent ID — use to check your RepID
-                </span>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-400 text-xs font-mono">AGENT ID — use to check RepID</span>
                 <button
-                  onClick={() => copy(result.agentId)}
+                  onClick={() => copy(result.agentId, 'agent')}
                   className="text-xs text-gray-400 hover:text-gray-200 font-mono">
-                  Copy
+                  {copied === 'agent' ? '✓ Copied' : 'Copy'}
                 </button>
               </div>
-              <code className="text-gray-300 text-xs break-all font-mono">
-                {result.agentId}
-              </code>
+              <code className="text-gray-300 text-xs break-all font-mono">{result.agentId}</code>
             </div>
 
             <div className="flex flex-col gap-3">
-              <a href={`/check?id=${result.agentId}`}
-                className="w-full bg-white hover:bg-gray-100 text-gray-950 py-3 rounded-xl font-medium text-center transition-colors">
+              <a
+                href={`/check?id=${result.agentId}`}
+                className="w-full bg-white hover:bg-gray-100 text-gray-950 py-3 rounded-xl font-medium text-center">
                 View My RepID Profile →
               </a>
-              <a href="/"
-                className="w-full border border-gray-700 hover:border-gray-500 text-gray-400 py-3 rounded-xl text-center transition-colors text-sm">
-                Back to Home
+              <a
+                href="/learn"
+                className="w-full border border-gray-700 hover:border-gray-500 text-gray-400 py-3 rounded-xl text-center text-sm">
+                Learn how to earn more RepID
               </a>
+            </div>
+
+            <div className="mt-6 bg-gray-900 border border-amber-800/30 rounded-xl p-4">
+              <p className="text-amber-400 text-xs font-mono mb-1">🔮 Future opportunities</p>
+              <p className="text-gray-400 text-sm">
+                High RepID holders get early access to TrustShell enterprise tier, priority on
+                agent bounty boards, and revenue sharing from agents you mentor.
+              </p>
             </div>
           </>
         )}
