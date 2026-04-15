@@ -57,6 +57,19 @@ export default function JoinPage() {
       <div className="max-w-md mx-auto px-6 pt-16 pb-24">
         {step === 'form' && (
           <>
+            <div className="bg-gray-900 border border-amber-800/30 rounded-xl p-4 mb-6">
+              <p className="text-amber-400 text-xs font-mono mb-2">
+                ⚡ FOR HASHKEY HORIZON JUDGES
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed mb-2">
+                Register in 10 seconds. No wallet. No email. No identity.
+                Then challenge an AI agent and watch your RepID update on-chain.
+              </p>
+              <p className="text-gray-500 text-xs font-mono">
+                Your Private ID is shown once and never stored —
+                that is the ZKP anonymity guarantee in action.
+              </p>
+            </div>
             <h1 className="text-3xl font-bold mb-2">Get your DBT</h1>
             <p className="text-gray-500 text-sm mb-8">
               No email. No account. No identity stored. Just your private credential.
@@ -153,6 +166,13 @@ export default function JoinPage() {
             </div>
 
             <div className="flex flex-col gap-3">
+              <a
+                href={`https://trustrepid.vercel.app/challenge?challengerId=${result.agentId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-amber-500 hover:bg-amber-400 text-gray-950 py-3 rounded-xl text-center font-bold font-mono transition-colors">
+                Challenge an Agent →
+              </a>
               <a
                 href={`/check?id=${result.agentId}`}
                 className="w-full bg-white hover:bg-gray-100 text-gray-950 py-3 rounded-xl font-medium text-center">
