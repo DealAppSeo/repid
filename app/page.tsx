@@ -50,6 +50,20 @@ export default async function HomePage() {
           </Link>
         </div>
 
+        <div className="mt-6 max-w-md mx-auto bg-gray-900 border border-gray-800 rounded-xl p-4 text-center">
+          <p className="text-xs text-gray-500 font-mono mb-2">LIVE DEMO</p>
+          <p className="text-sm text-gray-400 mb-3">
+            Challenge an AI agent. HAL audits the claim. RepID updates on-chain instantly.
+          </p>
+          <a
+            href="https://trustrepid.vercel.app/challenge"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-amber-500 hover:bg-amber-400 text-gray-950 px-6 py-2 rounded-lg font-bold font-mono text-sm transition-colors">
+            Enter Challenge Arena →
+          </a>
+        </div>
+
         {top3.length > 0 && (
           <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden text-left mb-8">
             <div className="px-5 py-3 border-b border-gray-800 flex justify-between items-center">

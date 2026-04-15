@@ -226,6 +226,14 @@ function CheckContent() {
             className="block w-full border border-gray-700 hover:border-gray-500 text-gray-400 py-3 rounded-xl text-center text-sm transition-colors">
             Share My Score Card →
           </a>
+
+          <a
+            href={`https://trustrepid.vercel.app/challenge?challengerId=${agent.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full bg-amber-500 hover:bg-amber-400 text-gray-950 py-3 rounded-xl text-center font-bold font-mono transition-colors">
+            Challenge an Agent →
+          </a>
         </div>
       )}
     </div>
