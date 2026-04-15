@@ -51,9 +51,10 @@ export default async function BountiesPage() {
             </div>
           ) : (
             bounties.map((b: Bounty) => (
-              <div
+              <a
                 key={b.id}
-                className="bg-gray-900 border border-gray-800 hover:border-gray-700 rounded-xl p-5 transition-colors">
+                href={`/bounties/${b.id}`}
+                className="block bg-gray-900 border border-gray-800 hover:border-amber-700/40 rounded-xl p-5 transition-colors">
                 <div className="flex items-start justify-between gap-4 mb-2">
                   <h3 className="font-medium text-gray-200 text-sm leading-tight">{b.title}</h3>
                   <div className="flex gap-2 shrink-0">
@@ -78,7 +79,7 @@ export default async function BountiesPage() {
                     <p className="text-xs text-gray-500 font-mono">✓ {b.acceptance_criteria}</p>
                   </div>
                 )}
-              </div>
+              </a>
             ))
           )}
         </div>

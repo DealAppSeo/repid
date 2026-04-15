@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
-  getAgent, getAgentBadges, getAgentHistory,
+  getAgent, getAgentBadges, getAgentHistory, getAgentEthics,
   TIER_INFO, MILESTONES, DID_YOU_KNOW,
 } from '@/lib/engine';
 
@@ -28,6 +28,8 @@ function CheckContent() {
   const [agent, setAgent] = useState<Agent>(null);
   const [badges, setBadges] = useState<Badge[]>([]);
   const [history, setHistory] = useState<Event[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [ethics, setEthics] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -46,10 +48,11 @@ function CheckContent() {
     if (!checkId.trim()) return;
     setLoading(true);
     setError(null);
-    const [agentData, badgeData, historyData] = await Promise.all([
+    const [agentData, badgeData, historyData, ethicsData] = await Promise.all([
       getAgent(checkId.trim()),
       getAgentBadges(checkId.trim()),
       getAgentHistory(checkId.trim()),
+      getAgentEthics(checkId.trim()),
     ]);
     if (!agentData) {
       setError('Agent ID not found.');
@@ -59,7 +62,22 @@ function CheckContent() {
     setAgent(agentData);
     setBadges(badgeData);
     setHistory(historyData);
+    setEthics(ethicsData);
     setLoading(false);
+
+    // Badge toast: compare previous badge count for this agent
+    if (typeof window !== 'undefined') {
+      const prevKey = `repid_badge_count_${checkId.trim()}`;
+      const prevCount = parseInt(localStorage.getItem(prevKey) ?? '0', 10);
+      if (badgeData.length > prevCount && prevCount > 0) {
+        const newest = badgeData[0];
+        setToast(`🏅 New badge: ${newest?.badge_name ?? 'Unknown'}`);
+        setTimeout(() => setToast(null), 5000);
+        const confetti = (await import('canvas-confetti')).default;
+        confetti({ particleCount: 60, spread: 60, colors: ['#F59E0B', '#FFFFFF'] });
+      }
+      localStorage.setItem(prevKey, String(badgeData.length));
+    }
 
     const milestone = MILESTONES.find(
       m => m.repid <= agentData.current_repid && m.repid > (agentData.current_repid - 500)
@@ -79,7 +97,8 @@ function CheckContent() {
   };
 
   const tier = agent ? TIER_INFO[agent.tier as keyof typeof TIER_INFO] : null;
-  const ethicsScore = agent ? Math.min(100, Math.round((agent.current_repid / 10000) * 100)) : 0;
+  const ethicsScore = ethics?.overallScore ?? 0;
+  const ethicsInterpretation = ethics?.interpretation ?? '';
   const isHuman = agent?.constitution?.type === 'HUMAN' || agent?.agent_name === 'HUMAN';
 
   return (
@@ -145,8 +164,11 @@ function CheckContent() {
               <span className="text-xs text-gray-600">/ 100</span>
             </div>
             <p className="text-xs text-gray-600 mt-1">
-              Mirror-test pass rate · Redemption arc · Service to least
+              {ethicsInterpretation || 'Mirror-test pass rate · Redemption arc · Service to least'}
             </p>
+            <a href={`/ethics?id=${agent.id}`} className="text-xs text-amber-400 hover:text-amber-300 mt-2 inline-block">
+              View full breakdown →
+            </a>
           </div>
 
           {badges.length > 0 && (

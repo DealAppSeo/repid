@@ -77,6 +77,20 @@ export async function getAgentBadges(agentId: string) {
   } catch { return []; }
 }
 
+export async function getAgentEthics(agentId: string) {
+  try {
+    const res = await fetch(`${ENGINE}/agents/${agentId}/ethics`, { cache: 'no-store' });
+    return res.ok ? res.json() : null;
+  } catch { return null; }
+}
+
+export async function getBounty(bountyId: string) {
+  try {
+    const res = await fetch(`${ENGINE}/bounties/${bountyId}`, { cache: 'no-store' });
+    return res.ok ? res.json() : null;
+  } catch { return null; }
+}
+
 export async function getLeaderboard(type: 'overall' | 'agents' | 'humans' = 'overall') {
   try {
     const res = await fetch(`${ENGINE}/agents?limit=50`, { next: { revalidate: 30 } });

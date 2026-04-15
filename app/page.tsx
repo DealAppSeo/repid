@@ -16,6 +16,7 @@ export default async function HomePage() {
         </div>
         <div className="flex items-center gap-4 text-sm">
           <Link href="/leaderboard" className="text-gray-400 hover:text-white">Leaderboard</Link>
+          <Link href="/ethics" className="text-gray-400 hover:text-white">Ethics</Link>
           <Link href="/learn" className="text-gray-400 hover:text-white">Learn</Link>
           <Link href="/bounties" className="text-gray-400 hover:text-white">Bounties</Link>
           <Link href="/join" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-medium hover:bg-gray-100">
