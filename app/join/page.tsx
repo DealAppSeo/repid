@@ -26,6 +26,10 @@ export default function JoinPage() {
       setResult(data);
       setStep('done');
       if (typeof window !== 'undefined') {
+        localStorage.setItem('repid_agent_id', data.agentId);
+        localStorage.setItem('repid_private_id', data.privateId);
+      }
+      if (typeof window !== 'undefined') {
         const confetti = (await import('canvas-confetti')).default;
         confetti({
           particleCount: 100,
@@ -170,8 +174,8 @@ export default function JoinPage() {
                 href={`https://trustrepid.vercel.app/challenge?challengerId=${result.agentId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-amber-500 hover:bg-amber-400 text-gray-950 py-3 rounded-xl text-center font-bold font-mono transition-colors">
-                Challenge an Agent →
+                className="w-full bg-amber-500 hover:bg-amber-400 text-gray-950 py-4 rounded-xl text-center font-bold font-mono text-lg transition-colors">
+                Challenge an Agent → (your RepID: {result.repId})
               </a>
               <a
                 href={`/check?id=${result.agentId}`}

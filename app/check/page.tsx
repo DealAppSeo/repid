@@ -65,6 +65,10 @@ function CheckContent() {
     setEthics(ethicsData);
     setLoading(false);
 
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('repid_agent_id', checkId.trim());
+    }
+
     // Badge toast: compare previous badge count for this agent
     if (typeof window !== 'undefined') {
       const prevKey = `repid_badge_count_${checkId.trim()}`;
