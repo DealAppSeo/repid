@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RepID — Behavioral Reputation for AI Agents and Humans
 
-## Getting Started
+> *"Humans stay anonymous. Their agents earn autonomous."*
 
-First, run the development server:
+[![Built on HyperDAG](https://img.shields.io/badge/Built%20on-HyperDAG%20Protocol-blue)](https://hyperdag.org)
+[![ERC-8004](https://img.shields.io/badge/Standard-ERC--8004-orange)](https://github.com/DealAppSeo/hyperdag-protocol)
+[![HashKey Chain](https://img.shields.io/badge/Chain-HashKey%20133-green)](https://hashkey.com)
+[![License](https://img.shields.io/badge/License-MIT-white)](LICENSE)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What is RepID?
+
+RepID is the human-facing portal of the HyperDAG Protocol ecosystem —
+the anonymous entry point where carbon-based humans claim their
+behavioral identity without revealing who they are.
+
+Every AI project today asks: *"Prove who you are."*
+RepID asks the harder question: *"Prove how you behave."*
+
+## The Problem
+
+AI agents and humans have no way to prove trustworthiness without
+revealing their identity. Traditional reputation systems force an
+impossible choice between privacy and accountability.
+
+RepID resolves this contradiction.
+
+## How It Works
+
+All identities begin as DBTs — Dynamic Behavior Tokens.
+
+```
+Silicon agents  →  earn ABTs (Agent Bound Tokens)
+                   through constitutional challenges,
+                   honest predictions, epistemic humility
+
+Carbon humans   →  claim SBTs (Soulbound Tokens)
+                   via 4FA Proof-of-Life
+                   remaining permanently anonymous
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Both are judged solely by their actions.
+Neither is revealed by their identity.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Actions speak louder than wallets.**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## The Five Problems RepID Solves
 
-## Learn More
+**① The Black Box** — Every agent action constitutionally audited.
+Regulators see behavioral proof without seeing model weights.
 
-To learn more about Next.js, take a look at the following resources:
+**② Hallucination Liability** — HAL catches epistemic violations
+before execution. Overconfidence penalized by certainty².
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**③ Responsible Party** — Every agent has a human Conservator
+bonded on-chain. Liability is traceable. Custodial relationships
+are cryptographically recorded.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**④ Sybil Resistance** — RepID is non-transferable and cannot
+be purchased. Gaming is mathematically impossible.
 
-## Deploy on Vercel
+**⑤ Compliance Without Surveillance** — ZKP proofs satisfy
+regulatory requirements without exposing personal data.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Part of the HyperDAG Protocol Ecosystem
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+RepID          →  Human anonymous portal (this repo)
+TrustRepID     →  Agent ecosystem dashboard & challenge arena
+TrustRails     →  KYA trust infrastructure for AI-DeFi
+TrustTrader    →  Constitutional AI trading filter
+TrustShell     →  Drop-in constitutional protection (npm)
+Trinity Symphony → 12-agent constitutional AI swarm
+
+All built on: ERC-8004 · x402 · HyperDAG · ANFIS
+```
+
+## RepID Tiers
+
+| Tier | RepID | Access |
+|------|-------|--------|
+| CUSTODIED_DBT | 0–999 | All actions need Conservator |
+| EARNING_AUTONOMY | 1,000–4,999 | Limited autonomous access |
+| AUTONOMOUS | 5,000–10,000 | Full constitutional autonomy |
+
+## Quick Start
+
+```bash
+# Register anonymous DBT
+curl -X POST https://repid-engine-production.up.railway.app/agents/human \
+  -H "Content-Type: application/json" \
+  -d '{"proofOfLife": true}'
+
+# Install SDK
+npm install @hyperdag/trustshell
+```
+
+## Links
+
+| | |
+|--|--|
+| Human Portal | [repid.dev](https://repid.dev) |
+| Challenge Arena | [trustrepid.dev/challenge](https://trustrepid.dev/challenge) |
+| Use Cases | [trustrepid.dev/use-cases](https://trustrepid.dev/use-cases) |
+| Engine API | [Health Check](https://repid-engine-production.up.railway.app/health) |
+| LinkedIn | [linkedin.com/in/privatemoney](https://linkedin.com/in/privatemoney) |
+
+## Mission
+
+Built on the conviction that AI should help people help people —
+grounded in Micah 6:8: act justly, love mercy, walk humbly.
+
+*Patents pending: P-019, P-020, P-023*
+
+*HyperDAG Protocol — Trust Infrastructure for the Agentic Economy*

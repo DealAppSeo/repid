@@ -171,7 +171,7 @@ export default function JoinPage() {
 
             <div className="flex flex-col gap-3">
               <a
-                href={`https://trustrepid.vercel.app/challenge?challengerId=${result.agentId}`}
+                href={`https://trustrepid.dev/challenge?challengerId=${result.agentId}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-amber-500 hover:bg-amber-400 text-gray-950 py-4 rounded-xl text-center font-bold font-mono text-lg transition-colors">
