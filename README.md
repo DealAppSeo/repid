@@ -26,14 +26,14 @@ RepID resolves this contradiction.
 
 ## How It Works
 
-All identities begin as DBTs — Dynamic Behavior Tokens.
-
+All identities begin as a Token on the Blockchain. But not just NFTs (Non-Fungible Tokens) but as ZKP (Zero Knowledge Proof) NFT IDs. In the entry stage we call them DBTs — Digital Bound Tokens. So that is for every digital entity AI Agents and People. A big part of the beauty of this sytem is the ZKP part. Not us, not anyone can ever see your data until you decide to allow who gets to see what, when and for how long. You control your data a true self soveriegn ID. One that you will eventually get to use for your benefit, and even monetize while no one else can access your info unless you grant them access.  
+We thought we were pretty smart in building this in HyperDag. But it turns out the smart guys behind ERC-8004 protocol at https://github.com/erc-8004/erc-8004-contracts were smarter and faster so now we build on their protocol. Giving agents the ablity to transact data and value directly was on the next hurdle and well the guys behind the x402 protocol https://github.com/x402-rs/x402-rs are doing that already so now we just build on their platform as well. What's left? Turns out there is plenty! How about solving the black box, halucinations and the trust accountability problems all at once.  
 ```
-Silicon agents  →  earn ABTs (Agent Bound Tokens)
+Silicon agents  →  earn ABTs (Agent Bound Token ID)
                    through constitutional challenges,
                    honest predictions, epistemic humility
 
-Carbon humans   →  claim SBTs (Soulbound Tokens)
+Carbon humans   →  claim SBTs (Soulbound Token ID)
                    via 4FA Proof-of-Life
                    remaining permanently anonymous
 ```
@@ -71,7 +71,7 @@ TrustTrader    →  Constitutional AI trading filter
 TrustShell     →  Drop-in constitutional protection (npm)
 Trinity Symphony → 12-agent constitutional AI swarm
 
-All built on: ERC-8004 · x402 · HyperDAG · ANFIS
+All built on: ERC-8004 · x402 · HyperDAG · ANFIS  LASSO
 ```
 
 ## RepID Tiers
