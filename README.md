@@ -1,115 +1,178 @@
-# RepID — Behavioral Reputation for AI Agents and Humans
+<div align="center">
 
-> *"Humans stay anonymous. Their agents earn autonomous."*
+# RepID
 
-[![Built on HyperDAG](https://img.shields.io/badge/Built%20on-HyperDAG%20Protocol-blue)](https://hyperdag.org)
-[![ERC-8004](https://img.shields.io/badge/Standard-ERC--8004-orange)](https://github.com/DealAppSeo/hyperdag-protocol)
-[![HashKey Chain](https://img.shields.io/badge/Chain-HashKey%20133-green)](https://hashkey.com)
-[![License](https://img.shields.io/badge/License-MIT-white)](LICENSE)
+**Humans are anonymous. Agents earn autonomous.**
 
-## What is RepID?
+[![Live](https://img.shields.io/badge/Live-repid.dev-000000?style=flat-square)](https://repid.dev)
+[![ERC-8004](https://img.shields.io/badge/Standard-ERC--8004-6B46C1?style=flat-square)](https://eips.ethereum.org/EIPS/eip-8004)
+[![ZKP](https://img.shields.io/badge/Privacy-ZKP--Anonymous-22C55E?style=flat-square)]()
+[![License](https://img.shields.io/badge/License-Apache_2.0-3B82F6?style=flat-square)](LICENSE)
+[![HyperDAG](https://img.shields.io/badge/Protocol-HyperDAG-F59E0B?style=flat-square)](https://github.com/DealAppSeo/hyperdag-protocol)
 
-RepID is the human-facing portal of the HyperDAG Protocol ecosystem —
-the anonymous entry point where carbon-based humans claim their
-behavioral identity without revealing who they are.
+*The anonymous entry point to the HyperDAG trust ecosystem.*
+*Prove how you behave, not who you are.*
 
-Every AI project today asks: *"Prove who you are."*
-RepID asks the harder question: *"Prove how you behave."*
+</div>
 
-## The Problem
+---
 
-AI agents and humans have no way to prove trustworthiness without
-revealing their identity. Traditional reputation systems force an
-impossible choice between privacy and accountability.
+## The Question RepID Asks
 
-RepID resolves this contradiction.
+> *"ERC-8004 gives agents a passport. x402 gives them a wallet. HyperDAG gives them a character."*
+
+Traditional identity systems ask: *Who are you?*
+
+RepID asks a harder question: **How do you behave?**
+
+Your behavioral record — earned through honest actions, constitutional compliance, and epistemic humility — becomes your credential. No name. No email. No surveillance. ZKP-anonymous from the first interaction.
+
+---
+
+## Protocol Foundation
+
+| Standard | Role | Layer |
+|----------|------|-------|
+| [ERC-7231](https://eips.ethereum.org/EIPS/eip-7231) | Human identity binding | Users |
+| [ERC-8004](https://github.com/erc-8004/erc-8004-contracts) | Agent identity & reputation | Agents |
+| [x402](https://github.com/x402-rs/x402-rs) | Agent-to-agent micropayments | Commerce |
+| [HyperDAG Protocol](https://github.com/DealAppSeo/hyperdag-protocol) | Constitutional trust via HAL + ZKP RepID | Trust |
+
+---
 
 ## How It Works
 
-All identities begin as a Token on the Blockchain. But not just NFTs (Non-Fungible Tokens) but as ZKP (Zero Knowledge Proof) NFT IDs. In the entry stage we call them DBTs — Digital Bound Tokens. So that is for every digital entity AI Agents and People. A big part of the beauty of this sytem is the ZKP part. Not us, not anyone can ever see your data until you decide to allow who gets to see what, when and for how long. You control your data a true self soveriegn ID. One that you will eventually get to use for your benefit, and even monetize while no one else can access your info unless you grant them access.  
+```mermaid
+flowchart TD
+    A([👤 You — anonymous]) --> B
 
-We thought we were pretty smart in building this in HyperDag. But it turns out the smart guys behind ERC-8004 protocol at https://github.com/erc-8004/erc-8004-contracts were smarter and faster so now we build on their protocol. Giving agents the ablity to transact data and value directly was on the next hurdle and well the guys behind the x402 protocol https://github.com/x402-rs/x402-rs are doing that already so now we just build on their platform as well. What's left? Turns out there is plenty! How about solving the black box, halucinations and the trust accountability problems all at once.  
-```
-Silicon agents  →  earn ABTs (Agent Bound Token ID)
-                   through constitutional challenges,
-                   honest predictions, epistemic humility
+    subgraph CLAIM ["Claim Your Identity"]
+        B[Request DBT\nDigital Bound Token] --> C[ZKP anchored\non-chain]
+        C --> D[Behavior builds\nRepID over time]
+    end
 
-Carbon humans   →  claim SBTs (Soulbound Token ID)
-                   via 4FA Proof-of-Life
-                   remaining permanently anonymous
-```
+    D --> E{RepID Score}
 
-Both are judged solely by their actions.
-Neither is revealed by their identity.
+    E -->|0 – 999| F([🔒 CUSTODIED_DBT\nAll actions need\nConservator approval])
+    E -->|1,000 – 4,999| G([⚡ EARNING_AUTONOMY\nLimited autonomous\naccess granted])
+    E -->|5,000 – 10,000| H([✅ AUTONOMOUS\nFull constitutional\nautonomy unlocked])
 
-**Actions speak louder than wallets.**
-
-## The Five Problems RepID Solves
-
-**① The Black Box** — Every agent action constitutionally audited.
-Regulators see behavioral proof without seeing model weights.
-
-**② Hallucination Liability** — HAL catches epistemic violations
-before execution. Overconfidence penalized by certainty².
-
-**③ Responsible Party** — Every agent has a human Conservator
-bonded on-chain. Liability is traceable. Custodial relationships
-are cryptographically recorded.
-
-**④ Sybil Resistance** — RepID is non-transferable and cannot
-be purchased. Gaming is mathematically impossible.
-
-**⑤ Compliance Without Surveillance** — ZKP proofs satisfy
-regulatory requirements without exposing personal data.
-
-## Part of the HyperDAG Protocol Ecosystem
-
-```
-RepID          →  Human anonymous portal (this repo)
-TrustRepID     →  Agent ecosystem dashboard & challenge arena
-TrustRails     →  KYA trust infrastructure for AI-DeFi
-TrustTrader    →  Constitutional AI trading filter
-TrustShell     →  Drop-in constitutional protection (npm)
-Trinity Symphony → 12-agent constitutional AI swarm
-
-All built on: ERC-8004 · x402 · HyperDAG · ANFIS  LASSO
+    style F fill:#7f1d1d,color:#fca5a5
+    style G fill:#78350f,color:#fcd34d
+    style H fill:#14532d,color:#86efac
+    style CLAIM fill:#1e1b4b,color:#c7d2fe
 ```
 
-## RepID Tiers
+**The ZKP Privacy Guarantee:**
+Your data:     encrypted at rest (AES-256-GCM)
+Your identity: hash only — plaintext never stored
+Your proof:    verifiable without revealing content
+Your control:  you decide who sees what, when, for how long
 
-| Tier | RepID | Access |
-|------|-------|--------|
-| CUSTODIED_DBT | 0–999 | All actions need Conservator |
-| EARNING_AUTONOMY | 1,000–4,999 | Limited autonomous access |
-| AUTONOMOUS | 5,000–10,000 | Full constitutional autonomy |
+---
 
-## Quick Start
+## Five Problems RepID Solves
+
+| # | Problem | How RepID Solves It |
+|---|---------|---------------------|
+| ① | **The Black Box** | Every agent action constitutionally audited. Regulators see behavioral proof, not model weights. |
+| ② | **Hallucination Liability** | HAL layer catches epistemic violations before execution. Overconfidence penalized mathematically. |
+| ③ | **Responsible Party** | Every agent has a human Conservator bonded on-chain. Liability is traceable without identity revealed. |
+| ④ | **Sybil Resistance** | RepID is non-transferable and cannot be purchased. Earning is the only path. Gaming is mathematically impossible. |
+| ⑤ | **Compliance Without Surveillance** | ZKP proofs satisfy regulatory requirements (EU AI Act, Colorado AI Act) without exposing personal data. |
+
+---
+
+## Get Started
+
+No account required. ZKP-anonymous by default.
 
 ```bash
-# Register anonymous DBT
+# Register your anonymous DBT
 curl -X POST https://repid-engine-production.up.railway.app/agents/human \
   -H "Content-Type: application/json" \
   -d '{"proofOfLife": true}'
 
-# Install SDK
-npm install @hyperdag/trustshell
+# Check your RepID score
+curl https://repid-engine-production.up.railway.app/agents/by-name/YOUR_AGENT
 ```
 
-## Links
+Or visit [repid.dev](https://repid.dev) directly — no terminal needed.
 
-| | |
-|--|--|
-| Human Portal | [repid.dev](https://repid.dev) |
-| Challenge Arena | [trustrepid.dev/challenge](https://trustrepid.dev/challenge) |
-| Use Cases | [trustrepid.dev/use-cases](https://trustrepid.dev/use-cases) |
-| Engine API | [Health Check](https://repid-engine-production.up.railway.app/health) |
-| LinkedIn | [linkedin.com/in/privatemoney](https://linkedin.com/in/privatemoney) |
+---
 
-## Mission
+## The Ecosystem
 
-Built on the conviction that AI should help people help people —
-grounded in Micah 6:8: act justly, love mercy, walk humbly.
+RepID is the human entry point. The full ecosystem:
+
+| Product | What It Does | For |
+|---------|-------------|-----|
+| **RepID** ← you are here | Anonymous human identity portal | Everyone |
+| [TrustRepID](https://trustrepid.dev) | Agent dashboard, challenge arena, leaderboard | Builders & agents |
+| [TrustShell](https://trustshell.dev) | Drop-in constitutional protection (`npm install`) | Developers |
+| [TrustTrader](https://trusttrader.dev) | Constitutional AI trading filter | Finance & DeFi |
+| [TrustRails](https://trustrails.dev) | Know Your Agent (KYA) compliance infrastructure | Enterprise |
+
+**Built on:**
+[ERC-8004](https://github.com/erc-8004/erc-8004-contracts) (agent identity standard) ·
+[x402](https://github.com/x402-rs/x402-rs) (micropayment protocol) ·
+[HyperDAG Protocol](https://github.com/DealAppSeo/hyperdag-protocol) (constitutional layer)
+
+---
+
+## Technical Foundation
+
+RepID scores are computed by [repid-engine](https://repid-engine-production.up.railway.app/health)
+across five behavioral layers:
+
+| Layer | Method | Effect |
+|-------|--------|--------|
+| Constitutional audit | ANFIS + LASSO | Baseline compliance |
+| Challenge outcomes | φ-asymmetric (φ = 1.618) | Rewards epistemic courage |
+| Prediction calibration | Logarithmic proper scoring | Rewards calibration |
+| Ecosystem need | Scarcity weighting | Rewards gap-filling |
+| Decay | √(activity), floor > 0 | Gentle inactivity penalty |
+
+**The key formula — Pythagorean Comma Veto:**
+531441 / 524288 ≈ 1.013643
+When 12 perfect fifths don't resolve to an octave,
+the gap reveals hidden dissonance.
+totalDissonance > 0.0195 → constitutional VETO
+totalDissonance < 0.0195 → action APPROVED
+
+---
+
+## Status
+
+| Component | Status |
+|-----------|--------|
+| repid.dev portal | ✅ Live |
+| repid-engine API | ✅ Live ([health](https://repid-engine-production.up.railway.app/health)) |
+| DBT registration | ✅ Active |
+| SBT minting | 🔄 In progress |
+| ZKP full proofs | 🔄 Testnet live (Base Sepolia · HashKey Chain) — Plonky3 mainnet Q2 2026 |
+| npm SDK | 🔄 `@hyperdag/trustshell` publishing Q2 2026 |
+
+---
+
+## Contributing
+
+RepID is part of the open HyperDAG Protocol ecosystem.
+
+- Protocol contributions: [hyperdag-protocol](https://github.com/DealAppSeo/hyperdag-protocol)
+- Bug reports: open an issue in this repo
+- The scoring engine is proprietary — see [trustrepid.dev](https://trustrepid.dev) for API docs
+
+---
+
+<div align="center">
+
+*Built on the conviction that AI should help people help people.*
+
+*Actions speak louder than wallets.*
+
+*Micah 6:8 — act justly, love mercy, walk humbly.*
 
 *Patents pending: P-019, P-020, P-023*
 
-*HyperDAG Protocol — Trust Infrastructure for the Agentic Economy*
+</div>
