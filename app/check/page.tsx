@@ -253,7 +253,7 @@ export default function CheckPage() {
           <span className="text-gray-500">.dev</span>
         </a>
         <a href="/join" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-medium text-sm">
-          Get My DBT →
+          Get My RepID Profile →
         </a>
       </nav>
       <Suspense fallback={<div className="text-center pt-16 text-gray-500">Loading...</div>}>

@@ -24,7 +24,7 @@ export default async function BountiesPage() {
           <span className="text-gray-500">.dev</span>
         </a>
         <a href="/join" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-medium text-sm">
-          Get My DBT →
+          Get My RepID Profile →
         </a>
       </nav>
 
