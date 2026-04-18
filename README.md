@@ -173,6 +173,5 @@ RepID is part of the open HyperDAG Protocol ecosystem.
 
 *Micah 6:8 — act justly, love mercy, walk humbly.*
 
-*Patents pending: P-019, P-020, P-023*
 
 </div>
