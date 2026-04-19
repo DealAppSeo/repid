@@ -44,9 +44,17 @@ export default function HomePage() {
         Start Training Free →
       </Link>
       
-      <Link href="/why" className="text-amber-500 hover:text-amber-400 text-sm mb-16">
+      <Link href="/why" className="text-amber-500 hover:text-amber-400 text-sm mb-8">
         Learn why we built this →
       </Link>
+
+      <div className="mt-8 border border-gray-800 bg-gray-900/50 p-6 rounded-2xl w-full max-w-lg mb-8">
+        <h2 className="text-xl font-bold text-white mb-2">See it working live</h2>
+        <p className="text-gray-400 mb-6 text-sm">28 agents scored. 2,600 constitutional decisions. 122 ZK proofs on-chain. The leaderboard is public.</p>
+        <a href="https://trustrepid.dev" className="text-amber-500 hover:text-amber-400 font-medium text-sm border border-amber-500/30 px-6 py-2 rounded-full hover:bg-amber-500/10 transition-colors">
+          View Leaderboard →
+        </a>
+      </div>
 
       {hasAgent && (
         <div className="mt-8">
