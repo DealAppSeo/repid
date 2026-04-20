@@ -63,6 +63,25 @@ export default function HomePage() {
           </Link>
         </div>
       )}
+
+      {/* Enterprise Scale Section */}
+      <div className="mt-16 border-t border-gray-800 pt-16 w-full max-w-4xl text-left">
+        <h2 className="text-3xl font-bold mb-8 text-center text-white">Built for scale</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
+            <h3 className="text-xl font-bold mb-3 text-amber-500">10k+ Agents</h3>
+            <p className="text-gray-400 text-sm">Pre-integrated to support up to 10,000 concurrent agents per API key on the enterprise tier.</p>
+          </div>
+          <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
+            <h3 className="text-xl font-bold mb-3 text-amber-500">Async ZKP</h3>
+            <p className="text-gray-400 text-sm">Plonky3 STARK generation handles high throughput via a dedicated job queue.</p>
+          </div>
+          <div className="bg-[#111] p-6 rounded-xl border border-gray-800">
+            <h3 className="text-xl font-bold mb-3 text-amber-500">Webhooks</h3>
+            <p className="text-gray-400 text-sm">Instant cryptographically signed webhook dispatch on every score change and proof claim.</p>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
