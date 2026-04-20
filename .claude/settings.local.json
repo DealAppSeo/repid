@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse -Name | Where-Object {$_ -match 'why'} | Select-Object -First 20)",
+      "PowerShell(Write-Host \"pages exists: $\\(Test-Path pages\\)\"; Write-Host \"app/why exists: $\\(Test-Path app/why\\)\"; Write-Host \"app/why/page.tsx exists: $\\(Test-Path app/why/page.tsx\\)\")",
+      "PowerShell(Get-ChildItem pages -ErrorAction SilentlyContinue | Select-Object Name; Write-Host \"---\"; Write-Host \"pages/why.tsx exists: $\\(Test-Path pages/why.tsx\\)\"; Write-Host \"pages/why.jsx exists: $\\(Test-Path pages/why.jsx\\)\")",
+      "PowerShell($r = Invoke-WebRequest -Uri \"https://www.repid.dev/why\" -UseBasicParsing -ErrorAction SilentlyContinue; Write-Host \"STATUS:\" $r.StatusCode; Write-Host \"LEN:\" $r.Content.Length; Write-Host \"SNIPPET:\" $r.Content.Substring\\(0,[Math]::Min\\(300,$r.Content.Length\\)\\))",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "mcp__claude_ai_Vercel__list_deployments",
+      "mcp__claude_ai_Vercel__get_deployment_build_logs"
+    ]
+  }
+}
