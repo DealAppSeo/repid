@@ -24,7 +24,7 @@ type Event = any;
 
 function CheckContent() {
   const params = useSearchParams();
-  const [agentId, setAgentId] = useState(params.get('id') ?? '');
+  const [agentId, setAgentId] = useState(params?.get('id') ?? '');
   const [agent, setAgent] = useState<Agent>(null);
   const [badges, setBadges] = useState<Badge[]>([]);
   const [history, setHistory] = useState<Event[]>([]);
@@ -37,7 +37,7 @@ function CheckContent() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const id = params.get('id');
+    const id = params?.get('id');
     if (id) check(id);
     const interval = setInterval(() => setTipIndex(i => (i + 1) % DID_YOU_KNOW.length), 8000);
     return () => clearInterval(interval);
