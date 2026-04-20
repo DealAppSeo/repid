@@ -26,7 +26,7 @@ function Bar({ label, value, max = 1, color = 'bg-amber-400' }: { label: string;
 
 function EthicsContent() {
   const params = useSearchParams();
-  const [agentId, setAgentId] = useState(params.get('id') ?? '');
+  const [agentId, setAgentId] = useState(params?.get('id') ?? '');
   const [agent, setAgent] = useState<Agent>(null);
   const [ethics, setEthics] = useState<Ethics>(null);
   const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ function EthicsContent() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const id = params.get('id');
+    const id = params?.get('id');
     if (id) load(id);
   }, []);
 
