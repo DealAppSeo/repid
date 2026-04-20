@@ -44,8 +44,8 @@ export default function RootLayout({
             <Link href="/learn" className="text-gray-400 hover:text-white transition">Learn</Link>
           </div>
           <div className="flex items-center">
-            <Link href="/onboarding/traits" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-bold text-sm hover:bg-gray-200 transition">
-              Start Training Free →
+            <Link href="/start" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-bold text-sm hover:bg-gray-200 transition">
+              Start
             </Link>
           </div>
         </nav>
