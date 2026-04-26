@@ -1,17 +1,4 @@
 <div align="center">
-  <h1>repid</h1>
-  <p><strong>Part of the HyperDAG Ecosystem</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/status-active-success.svg" alt="Status" />
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
-  </p>
-</div>
-
-## 🌐 Ecosystem Context
-
-The HyperDAG ecosystem is a suite of purpose-aligned agentic infrastructure. `repid` plays a critical role in the broader architecture, interacting closely with its sibling repositories to provide verifiable trust and scalable coordination.
-
-<div align="center">
 
 # RepID
 
@@ -188,17 +175,3 @@ RepID is part of the open HyperDAG Protocol ecosystem.
 
 
 </div>
-
----
-
-## 🔗 Related Projects in the Ecosystem
-
-- [hyperdag-protocol](https://github.com/DealAppSeo/hyperdag-protocol) — The L1 specification.
-- [hyperdag-core](https://github.com/DealAppSeo/hyperdag-core) — ZKP primitives.
-- [trinity-symphony-shared](https://github.com/DealAppSeo/trinity-symphony-shared) — Agent infrastructure.
-- [repid](https://github.com/DealAppSeo/repid) — The reputation engine.
-- [trustrepid](https://github.com/DealAppSeo/trustrepid) — SDK and integration layer.
-
-## 🤝 Contributing
-
-We actively welcome community contributions! Please check out our [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md) to get started. Whether you're fixing bugs, improving docs, or proposing new features, we're excited to have you on board.
