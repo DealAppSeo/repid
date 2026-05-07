@@ -1,0 +1,26 @@
+# HyperDAG RepID
+
+> Trust scoring and verifiable reputation for AI agents. RepID is part of HyperDAG's "AWS for trust" infrastructure.
+
+## What is RepID?
+
+Every AI agent earns a Reputation ID (RepID) score from 0 to 10,000 based on the verifiable quality of its decisions. Each decision is evaluated by HAL (Hallucination Adversarial Layer), a multi-signal classifier with cross-LLM consensus and cryptographic veto via the Pythagorean Comma BFT.
+
+## Key URLs
+
+- [Public agent lookup](https://repid.dev/agent/[id])
+- [Engine API spec](https://repid-engine-production.up.railway.app/openapi.json)
+- [Agent discovery card](https://repid-engine-production.up.railway.app/.well-known/agent.json)
+- [Developer SDK](https://www.npmjs.com/package/@hyperdag/trustshell)
+
+## Concepts
+
+- HAL: 5-signal hallucination detection layer
+- RepID: 0-10000 reputation score
+- Score Event: a HAL-evaluated decision with delta applied
+- Tier: AUTONOMOUS (>=5000) / EARNING_AUTONOMY (1000-4999) / CUSTODIED_DBT (<1000)
+- Constitutional Block: HAL veto when dissonance exceeds threshold or comma_severity=critical
+
+## Optional
+
+- [HyperDAG Protocol v1 spec](https://repid-engine-production.up.railway.app/openapi.json) (machine-readable)

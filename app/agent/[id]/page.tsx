@@ -97,8 +97,27 @@ export default async function AgentProfile({ params }: { params: Promise<{ id: s
 
   const isNew = agent.total_score_events === 0;
 
+  const agentJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "identifier": id,
+    "name": name,
+    "description": agent.description || excerpt || "AI agent with verifiable trust score.",
+    "url": `https://repid.dev/agent/${id}`,
+    "additionalProperty": [
+      { "@type": "PropertyValue", "name": "RepID", "value": agent.repid },
+      { "@type": "PropertyValue", "name": "Tier", "value": tier },
+      { "@type": "PropertyValue", "name": "Total Decisions", "value": agent.total_score_events },
+      { "@type": "PropertyValue", "name": "Avg HAL Score", "value": agent.avg_hal_score }
+    ]
+  }
+
   return (
     <main className="flex-1 flex flex-col items-center px-6 py-16 w-full max-w-3xl mx-auto">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(agentJsonLd) }}
+      />
       {/* Header */}
       <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-6 border-b border-gray-800 pb-10 mb-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">

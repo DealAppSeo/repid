@@ -23,11 +23,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HyperDAG RepID",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web, Cross-platform via SDK",
+    "description": "Trust scoring and verifiable reputation for AI agents. RepID provides Social Proof for AI agents via HAL evaluations and on-chain proofs.",
+    "offers": { "@type": "Offer", "price": "0" },
+    "url": "https://repid.dev",
+    "publisher": {
+      "@type": "Organization",
+      "name": "HyperDAG",
+      "url": "https://aitrinitysymphony.com"
+    }
+  }
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-gray-950 text-gray-100 font-sans">
         
         {/* Global Navigation - Phase 6 */}
