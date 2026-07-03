@@ -60,7 +60,7 @@ export default function LearnPage() {
       <div className="text-center p-8 bg-gray-900/50 rounded-2xl border border-gray-800">
         <h2 className="text-xl font-bold mb-2">Want to go deeper?</h2>
         <p className="text-gray-400 text-sm mb-6">Explore the full architecture and math behind the protocol.</p>
-        <a href="https://hyperdag.dev" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 font-bold tracking-wide transition-colors">
+        <a href="https://github.com/DealAppSeo/hyperdag-protocol" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 font-bold tracking-wide transition-colors">
           Read the HyperDAG Protocol documentation →
         </a>
       </div>
