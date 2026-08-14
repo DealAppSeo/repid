@@ -1,0 +1,58 @@
+# Minimal CI for repid.
+#
+# WHY THIS EXISTS. This repository had no CI at all, and it serves a live
+# surface while having gone ~3 months without a commit. "No CI + dormant +
+# live" is the combination where a repo rots silently: nothing runs, so
+# nothing reports, so the absence of red looks like green.
+#
+# Deliberately small. The point is to establish a floor that actually runs,
+# not to impose a gate this repo has never had to pass. Three steps, each of
+# which was executed locally against this tree before being written here:
+#
+#   npm ci        -> installs (377 packages, lockfile present and valid)
+#   tsc --noEmit  -> VERIFIED exit 0 on the current tree
+#   next build    -> see the note below
+#
+# On `next build`: this step could NOT be exercised in the environment where
+# this workflow was authored, because that sandbox blocks fonts.googleapis.com
+# and `next/font` fails to fetch Geist Mono. That is an environment limitation,
+# not a defect in this repo. A GitHub runner has outbound network, so this step
+# is expected to pass here -- but "expected" is not "verified", and the first
+# run of this workflow is its first real execution. If it goes red on the font
+# fetch, that is the same class of failure and not a regression in the app.
+#
+# lint is intentionally NOT included as a blocking step yet: `eslint` has never
+# run in CI here, so its current state is unmeasured, and a gate that is red on
+# arrival trains people to ignore it. Measure it, then promote it.
+
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # `npm ci` rather than `npm install`: it fails loudly when the lockfile
+      # and package.json disagree, instead of quietly resolving something else.
+      - name: Install
+        run: npm ci
+
+      # Typecheck before build. `next build` does not typecheck every file --
+      # it compiles what is reachable from a route -- so tsc catches things the
+      # build structurally cannot.
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
