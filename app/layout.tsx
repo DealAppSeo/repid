@@ -65,7 +65,18 @@ export default function RootLayout({
             <Link href="/ecosystem" className="text-gray-400 hover:text-white transition">Ecosystem</Link>
             <Link href="/learn" className="text-gray-400 hover:text-white transition">Learn</Link>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
+            {/* Phones: the same three links behind a native disclosure, no script (they were hidden below md). */}
+            <details className="relative md:hidden">
+              <summary className="list-none cursor-pointer rounded-lg border border-gray-800 px-3 py-2 text-sm font-medium text-gray-300">
+                Menu
+              </summary>
+              <div className="absolute right-0 mt-2 flex w-40 flex-col rounded-lg border border-gray-800 bg-gray-950 py-2 text-sm">
+                <Link href="/why" className="px-4 py-2 text-gray-300 hover:text-white">Why</Link>
+                <Link href="/ecosystem" className="px-4 py-2 text-gray-300 hover:text-white">Ecosystem</Link>
+                <Link href="/learn" className="px-4 py-2 text-gray-300 hover:text-white">Learn</Link>
+              </div>
+            </details>
             <Link href="/start" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-bold text-sm hover:bg-gray-200 transition">
               Start
             </Link>

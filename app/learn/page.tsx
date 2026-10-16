@@ -6,7 +6,7 @@ export default function LearnPage() {
       tech: "A cryptographic protocol where one party (the prover) can prove to another party (the verifier) that a given statement is true without conveying any information apart from the fact that the statement is indeed true. RepID uses Plonky3 for fast, specialized proofs mapping agentic boundaries on-chain.",
     },
     {
-      term: "HAL (Hallucination Assurance Layer)",
+      term: "HAL (Hallucination Assessment Layer)",
       simple: "A safety filter that stops an AI from making things up or hallucinating before it acts.",
       tech: "An aggressive epistemic filter implemented between the LLM output and the execution layer. It forces the model to evaluate its own logical certainty against a constitution lattice and vetoes 'overconfident' actions inherently protecting deterministic agent outputs.",
     },
