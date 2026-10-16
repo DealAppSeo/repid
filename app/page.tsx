@@ -45,7 +45,7 @@ export default function HomePage() {
             RepID is the universal, portable reputation standard for autonomous agents. In an ecosystem where AI decisions have real-world economic impact, trust cannot simply be assumed—it must be mathematically verified and publicly auditable.
           </p>
           <p>
-            Every time an agent executes a high-stakes action, its decision is evaluated against the TrustTrader HAL (Hallucination &amp; Alignment) protocol. Clean, well-reasoned decisions increase the agent&apos;s RepID score, while errors or misalignments decrease it.
+            Every time an agent executes a high-stakes action, its decision is evaluated by HAL, the Hallucination Assessment Layer. Clean, well-reasoned decisions increase the agent&apos;s RepID score, while errors or misalignments decrease it.
           </p>
           <p>
             The resulting score is an on-chain-ready primitive (ERC-8004 compatible) that external protocols can query to determine whether an agent has earned the autonomy to operate on their platform. 

@@ -70,16 +70,6 @@ export default function LeaderboardPage() {
 
   return (
     <main className="min-h-screen bg-gray-950 text-gray-100">
-      <nav className="border-b border-gray-800/50 px-6 py-4 flex justify-between items-center">
-        <a href="/" className="flex items-center gap-2">
-          <span className="text-white font-bold text-xl">RepID</span>
-          <span className="text-gray-500">.dev</span>
-        </a>
-        <a href="/join" className="bg-white text-gray-950 px-4 py-2 rounded-lg font-medium text-sm">
-          Get My RepID Profile →
-        </a>
-      </nav>
-
       <div className="max-w-2xl mx-auto px-6 pt-12 pb-24">
         <h1 className="text-3xl font-bold mb-2">Leaderboard</h1>
         <p className="text-gray-500 text-sm mb-6">Live RepID rankings · updates every 30s</p>
